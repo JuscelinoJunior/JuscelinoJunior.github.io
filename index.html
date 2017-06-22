@@ -79,7 +79,7 @@
 			<section id="contato">
 				<div class="container">
 					<div class="formClass">
-						<form>
+						<form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycby7owN71bCv9z2oFMVMln36Eep_LGPOFesABHxUOaJEQqd5wfWW/exec">
 							<div class="form-group">
 								<label for="name">Nome</label>
 								<input type="text" class="form-control" id="name" name="name" placeholder="" required>
@@ -99,6 +99,9 @@
 								<input type="submit" class="form-control" id="send" name="send" value="Enviar">
 							</div>
 						</form>
+						<div id="thankyou_message">
+							<h2>Obrigado pela mensagem!</h2>	
+						</div>
 						<div id="socialContato">
 							<a href="https://www.facebook.com/juniorjuscelino"><span class="fa fa-facebook"></span></a>
 							<a href="https://github.com/JuscelinoJunior"><span class="fa fa-github"></span></a>
@@ -162,5 +165,7 @@
 				singleItem: true
 			})
 		</script>
+		<script data-cfasync="false" type="text/javascript" 
+		src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
 	</body>
 </html>
