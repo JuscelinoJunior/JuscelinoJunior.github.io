@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<title> Maranata - Clube de Desbravadores </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body onLoad="atualizaContador()" style="background: url('img/escoteiros.jpg') center">
+		<div class="menu--mobile">
+			<div class="menu--mobile__close" onclick="closeModal()"><img src="img/close__icon.png"></div>
+			<ul class="menu--mobile__list">
+				<a href="quemsomosdbv.html"><li class="menu--mobile__list__li">Quem Somos - Desbravadores</li></a>
+				<a href="quemsomosmaranata.html"><li class="menu--mobile__list__li">Quem Somos - Maranata</li></a>
+				<li class="menu--mobile__list__li">Membros</li>
+				<li class="menu--mobile__list__li">Fale Conosco</li>
+				<li class="menu--mobile__list__li">Agenda</li>
+				<li class="menu--mobile__list__li">Galeria</li>
+			</ul>
+		</div>
+		<div class="main">
+			<div class="main__btn--menu--mobile" onclick="openModal()">
+				<div class="main__btn--menu--mobile__line"></div>
+				<div class="main__btn--menu--mobile__line"></div>
+				<div class="main__btn--menu--mobile__line"></div>
+			</div>
+			<div id="main__count"></div>
+			<div class="main__img"></div>
+			<div class="main__menu">
+				<div class="main__menu__row main__menu__row--row1">
+					<a href="quemsomosdbv.html" class="main__menu__row__link">
+						<p class="main__menu__row__link__text">Quem Somos - Desbravadores</p>
+						<img src="img/dbv_icon.png">
+					</a>
+					<a href="quemsomosmaranata.html" class="main__menu__row__link">
+						<p class="main__menu__row__link__text">Quem Somos - Maranata</p>
+						<img src="img/maranata_icon.png">
+					</a>
+					<a href="#" class="main__menu__row__link">
+						<p class="main__menu__row__link__text">Membros</p>
+						<img src="img/membros_icon.png">
+					</a>
+					<a href="#" class="main__menu__row__link">
+						<p class="main__menu__row__link__text">Fale Conosco</p>
+						<img src="img/email_icon.png">
+					</a>
+					<a href="#" class="main__menu__row__link">
+						<p class="main__menu__row__link__text">Agenda</p>
+						<img src="img/agenda_icon.png">
+					</a>
+				</div>
+				<div class="main__menu__row main__menu__row--row2">
+					<a href="#" class="main__menu__row__link">
+					<img src="img/galeria_icon.png">
+					</a>
+					<a href="#" class="main__menu__row__link">
+					<img src="img/twitter_icon.png">
+					</a>
+					<a href="#" class="main__menu__row__link">
+					<img src="img/insta_icon.png">
+					</a>
+					<a href="#" class="main__menu__row__link">
+					<img src="img/yt_icon.png">
+					</a>
+					<a href="#" class="main__menu__row__link">
+					<img src="img/fb_icon.png">
+					</a>
+				</div>
+			</div>
+			<a href="http://www.adventistas.org" class="main__adv--icon" target="_blank"><img src="img/adv_icon.png"></a>
+		</div>
+		<script language="Javascript">
+			date = new Date();
+
+			var YY = 2019;
+			var MM = 01;
+			var DD = 08;
+			var HH = 00;
+			var MI = 00;
+			var SS = 00; 
+
+			function atualizaContador() {  
+				var hoje = new Date();  
+				var futuro = new Date(YY,MM-1,DD,HH,MI,SS);   
+				var ss = parseInt((futuro - hoje) / 1000);  
+				var mm = parseInt(ss / 60);  
+				var hh = parseInt(mm / 60);  
+				var dd = parseInt(hh / 24);   
+				ss = ss - (mm * 60);  
+				mm = mm - (hh * 60);  
+				hh = hh - (dd * 24);   
+				var faltam = '<center> CAMPORI DSA<br>';  
+				faltam += (dd && dd > 1) ? dd+' dias ' : (dd==1 ? '1 dia, ' : '');  
+				faltam += (toString(hh).length) ? hh+' hrs ' : '';  
+				faltam += (toString(mm).length) ? mm+' min e ' : '';  
+				faltam += ss+' seg</center>';   
+
+				if (dd+hh+mm+ss > 0) {
+				  document.getElementById('main__count').innerHTML = faltam;	
+				  setTimeout(atualizaContador,1000);  
+				}else{
+				  document.getElementById('main__count').innerHTML = 'COMEÇOU!';	
+				  setTimeout(atualizaContador,1000);  
+				}
+			}
+			function openModal(){
+				document.getElementsByClassName("menu--mobile")[0].style.display = "block";
+			}
+			function closeModal(){
+				document.getElementsByClassName("menu--mobile")[0].style.display = "none";
+			}
+		</script>
+	</body>
+</html>

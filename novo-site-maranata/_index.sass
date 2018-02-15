@@ -1,0 +1,152 @@
+body
+	.menu--mobile
+		position: absolute
+		width: 100%
+		height: 100%
+		background-color: rgba(0, 0, 0, 0.9)
+		z-index: 10000
+		top: 0
+		display: none
+		.menu--mobile__close
+			position: absolute
+			width: 50px
+			right: 10px
+			top: 10px
+			cursor: pointer
+			img
+				width: 100%
+				height: auto
+		.menu--mobile__list
+			font-family: Roboto
+			color: white
+			text-align: center
+			margin-top: 50px	
+			font-size: 25px
+			a
+				text-decoration: none
+				color: white	
+			.menu--mobile__list__li
+				font-size: 20px
+				margin-bottom: 20px
+	.main
+		display: flex
+		align-items: center
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: center
+		.main__btn--menu--mobile__line
+			width: 100%
+			height: 8px
+			background: white
+		.main__img
+			width: 600px
+			height: 404px
+		#main__count
+			position: absolute
+			font-family: Roboto
+			line-height: 18px
+			text-transform: uppercase
+			.title
+				font-size: 10px
+				margin-bottom: 0
+		.main__adv--icon
+			position: absolute
+		.main__menu
+			position: absolute
+			display: flex	
+			align-items: center
+			flex-direction: row
+			flex-wrap: wrap
+			justify-content: center
+			.main__menu__row
+				display: flex
+				align-items: center
+				justify-content: space-between
+				.main__menu__row__link		
+					.main__menu__row__link__text
+						position: absolute
+						top: 75px
+						color: white
+						font-family: Roboto
+						font-size: 15px
+						opacity: 0
+						transition: all 500ms ease
+				.main__menu__row__link:hover .main__menu__row__link__text
+							opacity: 1
+
+@media screen and (max-width: 768px)
+	.main__btn--menu--mobile
+		display: flex
+		flex-wrap: wrap
+		position: absolute
+		top: 30px
+		left: 20px
+		width: 50px
+		height: 50px
+		cursor: pointer
+@media screen and (max-width: 667px)
+	.main
+		margin-top: 20px
+		.main__adv--icon
+			bottom: 20px
+		.main__img
+			background: url(img/main300px.png)
+			max-width: 300px
+			max-height: 202px
+		#main__count
+			color: white
+			font-size: 13px
+			top: 260px
+		.main__menu
+			max-width: 195px
+			bottom: 60px
+			img
+				width: 25px
+				height: auto
+			.main__menu__row
+				width: 195px
+			.main__menu__row--row1
+				margin-bottom: 5px	
+
+@media screen and (min-width: 668px)
+	.main
+		margin-top: 20px
+			display: none
+		.main__adv--icon
+			bottom: 20px
+		.main__img
+			background: url(img/main.png)
+			max-width: 600px
+			max-height: 404px
+		#main__count
+			top: 260px	
+		.main__menu
+			max-width: 390px
+			bottom: 60px
+			.main__menu__row
+				width: 390px	
+			.main__menu__row--row1
+				margin-bottom: 25px	
+
+@media screen and (max-height: 375px)
+	.main
+		margin-top: 10px
+		.main__adv--icon
+			bottom: 10px
+		.main__menu__row--row1
+			margin-bottom: 5px
+		#main__count
+			top: 230px
+		.main__menu
+			bottom: 50px
+			img
+				width: 15px
+				height: auto	
+
+@media screen and (max-height: 320px)
+	.main	
+		#main__count
+			top: 120px		
+			color: black
+			font-size: 8px
+	

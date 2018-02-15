@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title> Maranata - Clube de Desbravadores </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<header class="menu">
+			<div class="menu__icon">
+				<a href="index.html"><div class="menu__icon__img"><img src="img/maranata_menu.png"></div></a>
+			</div>
+		</header>
+		<video autoplay muted loop class="video--dbv">
+			<source src="video/maranata.mp4" type="video/mp4">
+		</video>
+		<div class="close--youtube" onclick="videoClose()"><img src="img/close__icon.png"></div>
+		<div class="main--quem--somos--maranata">
+		<div class="main--quem--somos--maranata__youtube--maranata"></div>
+		<div class="main--quem--somos--maranata__background"></div>
+			<p class="main--quem--somos--maranata__text--dbv">
+				Fundado em 13 de Maio de 1971, o Clube Maranata é um dos mais tradicionais do estado do Rio de Janeiro. Localizado em Nova Iguaçu, está aberto até hoje com quase 47 anos de atividade. Se você é ou conhece algum juvenil de 10 a 15 anos, venha para uma das nossas reuniões: Sábado às 14:30 e Domingo às 9:00. Isso é <span style="color:white" id="log"></span>
+			</p>
+			<div class="main--quem--somos--maranata__play--icon">
+				<img src="img/play.png" onclick="videoPlay()">
+			</div>
+		</div>	
+		<script>
+			// Get the video
+			var video = document.getElementsByClassName("video");
+
+			// Pause and play the video, and change the button text
+			function videoPlay() {
+				document.getElementsByClassName("main--quem--somos--maranata__youtube--maranata")[0].style.display="block";
+				document.getElementsByClassName("close--youtube")[0].style.display="block";
+				document.getElementsByClassName("main--quem--somos--maranata__youtube--maranata")[0].innerHTML=
+				'<iframe width="100%" height="100%" src="https://www.youtube.com/embed/te-iaGsDvtE?autoplay=1"></iframe>';
+			}
+
+			var div = document.getElementById('log');
+			var textos = ['Aventura', 'União', 'Disciplina', 'Amizade', 'Família', 'Comunhão', 'Maranata'];
+
+			function escrever(str, done) {
+			    var char = str.split('').reverse();
+			    var typer = setInterval(function() {
+			        if (!char.length) {
+			            clearInterval(typer);
+			            return setTimeout(done, 500);
+			        }
+			        var next = char.pop();
+			        div.innerHTML += next;
+			    }, 100);
+			}
+			function videoClose(){
+				document.getElementsByClassName("main--quem--somos--maranata__youtube--maranata")[0].style.display="none";
+				document.getElementsByClassName("close--youtube")[0].style.display="none";
+				document.getElementsByClassName("main--quem--somos--maranata__youtube--maranata")[0].innerHTML=
+				'';
+			}
+
+			function limpar(done) {
+			    var char = div.innerHTML;
+			    var nr = char.length;
+			    var typer = setInterval(function() {
+			        if (nr-- == 0) {
+			            clearInterval(typer);
+			            return done();
+			        }
+			        div.innerHTML = char.slice(0, nr);
+			    }, 100);
+			}
+
+			function rodape(conteudos, el) {
+			    var atual = -1;
+				function prox(cb){
+					if (atual < conteudos.length - 1) atual++;
+					else atual = 0;
+					var str = conteudos[atual];
+					escrever(str, function(){
+						limpar(prox);
+					});
+				}
+				prox(prox);
+			}
+			window.onload=rodape(textos);
+		</script>
+	</body>
+</html>

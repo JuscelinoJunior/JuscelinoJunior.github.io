@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title> Maranata - Clube de Desbravadores </title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<header class="menu">
+			<div class="menu__icon">
+				<a href="index.html"><div class="menu__icon__img"><img src="img/dbv_menu.png"></div></a>
+			</div>
+		</header>
+		<video autoplay muted loop class="video--dbv">
+			<source src="video/desbravadores.mp4" type="video/mp4">
+		</video>
+		<div class="close--youtube" onclick="videoClose()"><img src="img/close__icon.png"></div>
+		<div class="main--quem--somos">
+		<div class="main--quem--somos__background"></div>
+			<p class="main--quem--somos__text--dbv">
+				Meninos e meninas com idades entre 10 e 15 anos, de diferentes classes sociais, cor, religião. Reúnem-se, em geral, uma vez por semana para aprender a desenvolver talentos, habilidades, percepções e o gosto pela natureza. Aqui tem <span style="color:white" id="log"></span>
+			</p>
+			<div class="main--quem--somos__youtube--dbv">
+			</div>	
+			<div class="main--quem--somos__play--icon">
+				<img src="img/play.png" onclick="videoPlay()">
+			</div>
+			<p class="main--quem--somos__text--maranata">
+				O <a href="quemsomosmaranata.html"><span style="text-decoration: underline">Clube de Desbravadores Maranata</span></a> representa os <a href="http://www.adventistas.org/pt/desbravadores/" target='_blank'><span style="text-decoration: underline">Desbravadores</span></a> do Distrito de Nova Iguaçu - RJ, localizado na DSA - Divisão Sulamericana, USEB - Uniao Sudeste Brasileira, ARS - Associaçao Rio Sul 3ª Região.
+			</p>
+		</div>	
+		<script>
+			// Get the video
+			var video = document.getElementsByClassName("video");
+
+			// Pause and play the video, and change the button text
+			function videoPlay() {
+				document.getElementsByClassName("main--quem--somos__youtube--dbv")[0].style.display="block";
+				document.getElementsByClassName("close--youtube")[0].style.display="block";
+				document.getElementsByClassName("main--quem--somos__youtube--dbv")[0].innerHTML=
+				'<iframe width="100%" height="100%" src="https://www.youtube.com/embed/te-iaGsDvtE?autoplay=1"></iframe>';
+			}
+
+			var div = document.getElementById('log');
+			var textos = ['Aventura', 'Diversão', 'Nós e Amarras', 'Ordem Unida', 'Amizade', 'Deus'];
+
+			function escrever(str, done) {
+			    var char = str.split('').reverse();
+			    var typer = setInterval(function() {
+			        if (!char.length) {
+			            clearInterval(typer);
+			            return setTimeout(done, 500);
+			        }
+			        var next = char.pop();
+			        div.innerHTML += next;
+			    }, 100);
+			}
+			function videoClose(){
+				document.getElementsByClassName("main--quem--somos__youtube--dbv")[0].style.display="none";
+				document.getElementsByClassName("close--youtube")[0].style.display="none";
+				document.getElementsByClassName("main--quem--somos__youtube--dbv")[0].innerHTML=
+				'';
+			}
+
+			function limpar(done) {
+			    var char = div.innerHTML;
+			    var nr = char.length;
+			    var typer = setInterval(function() {
+			        if (nr-- == 0) {
+			            clearInterval(typer);
+			            return done();
+			        }
+			        div.innerHTML = char.slice(0, nr);
+			    }, 100);
+			}
+
+			function rodape(conteudos, el) {
+			    var atual = -1;
+				function prox(cb){
+					if (atual < conteudos.length - 1) atual++;
+					else atual = 0;
+					var str = conteudos[atual];
+					escrever(str, function(){
+						limpar(prox);
+					});
+				}
+				prox(prox);
+			}
+			window.onload=rodape(textos);
+		</script>
+	</body>
+</html>
