@@ -1,0 +1,22 @@
+{
+  "name": "Enfermagem UFF",
+  "description": "Site para o curso de Enfermagem da UFF Rio das OStras",
+  "main": "main.js",
+  "authors": [
+    "Juscelino Junior"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "enfermagem",
+    "uff"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
